@@ -69,7 +69,11 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
-        //
+        //mengambil data pegawai berdasarkan id yang di pilih
+        $pegawai = DB::table('pegawai')->where('pegawai_id', $id)->get();
+
+        // passing data pegawai yang di dapat ke view edit
+        return view('edit', ['pegawai'=>$pegawai]);
     }
 
     /**
@@ -79,9 +83,18 @@ class PegawaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        //update data pegawai
+        DB::table('pegawai')->where('pegawai_id', $request->id)->update([
+            'pegawai_nama'    => $request->nama,
+            'pegawai_jabatan' => $request->jabatan,
+            'pegawai_umur'    => $request->umur,
+            'pegawai_alamat'  => $request->address
+        ]);
+
+        // alihkan ke halaman ke dalam halaman pegawai
+        return redirect ('/pegawai');
     }
 
     /**
@@ -92,6 +105,10 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // hapus pegawai
+        DB::table('pegawai')->where('pegawai_id', $id)->delete();
+
+        // alihkan halaman
+        return redirect('/pegawai');
     }
 }

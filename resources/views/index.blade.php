@@ -33,7 +33,7 @@
                     </td>
                     <td>
                         <a href="/pegawai/edit/{{ $p->pegawai_id }}" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="/pegawai/delete/{{ $p->pegawai_id }}" class="btn btn-danger btn-sm">Hapus</a>
+                        <a href="/pegawai/hapus/{{ $p->pegawai_id }}" class="btn btn-danger btn-sm">Hapus</a>
                     </td>
                 </tr>
             @endforeach
