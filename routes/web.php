@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 // routes pegawai
 Route::get('/pegawai', 'PegawaiController@index');
+Route::get('/pegawai/tambah', 'PegawaiController@create');
+Route::post('/pegawai/store', 'PegawaiController@store');
